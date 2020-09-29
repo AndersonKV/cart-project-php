@@ -1,0 +1,44 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Cart Project</title>
+     <!-- bootstrap css -->
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <!-- main css -->
+     <link rel="stylesheet" href="css/styles.css">
+     <!-- font awesome -->
+     <link rel="stylesheet" href="css/all.css">
+     <script>
+         let peoples = new Array();
+
+         if (localStorage.hasOwnProperty("cart-item")) {
+             peoples = JSON.parse(localStorage.getItem("cart-item"));
+             console.log(peoples);
+         } else {
+             window.location.href = "/";
+         }
+     </script>
+ </head>
+
+ <body style="background-color: pink;">
+
+     <div class="container checkout-container">
+         <h3>Compra finalizada com sucesso, aqui esta os produtos comprados <span><a href="/"><i class="fas fa-arrow-circle-left"></i></a></span></h3>
+         <hr>
+         <div class="row" class="store-items" id="store-items">
+
+         </div>
+     </div>
+
+
+     <!-- jquery -->
+     <script src="js/jquery-3.3.1.min.js"></script>
+
+     <script type="module" language="JavaScript" src="js/main-checkout.js">
+     </script>
+ </body>
+
+ </html>

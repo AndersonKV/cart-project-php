@@ -1,0 +1,79 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Cart Project</title>
+     <!-- bootstrap css -->
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <!-- main css -->
+     <link rel="stylesheet" href="css/styles.css">
+     <!-- font awesome -->
+     <link rel="stylesheet" href="css/all.css">
+ </head>
+
+ <body>
+     <?php include('../App/Views/components/header.php'); ?>
+     <?php include('../App/Views/components/banner.php'); ?>
+     <?php include('../App/Views/components/about.php'); ?>
+
+     <section id="store" class="store py-5">
+         <div class="container">
+
+             <?php include('../App/Views/components/searchBox.php'); ?>
+
+             <div class="row" class="store-items" id="store-items">
+
+                 <?php if (isset($this->view->products)) : ?>
+
+                     <?php foreach ($this->view->products as $item) : ?>
+
+                         <div id="<?php echo $item['id'] ?>" class=" col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item <?php echo $item['type'] ?>" data-item="<?php echo $item['type'] ?>">
+                             <!-- Modal -->
+                             <div id="modal"></div>
+
+                             <div class="card">
+                                 <div class="img-container">
+                                     <img src="<?= 'img/' . $item['image'] ?>" class="card-img-top store-img" alt="">
+                                     <span type="button" class="btn store-item-icon" data-toggle="modal" data-target="#exampleModalCenter" id="<?php echo $item['id'] ?>">
+                                         <i class="fas fa-shopping-cart"></i>
+                                     </span>
+                                 </div>
+                                 <div class="card-body">
+                                     <div class="card-text d-flex justify-content-between text-capitalize">
+                                         <h5 id="store-item-name"><?php echo $item['name'] ?></h5>
+                                         <h5 class="store-item-value">$ <strong id="store-item-price" class="font-weight-bold"><?php echo  $item['price'] ?></strong></h5>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     <?php endforeach; ?>
+
+                 <?php else : ?>
+                     <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item  <?php echo $item['type'] ?>" data-item="${item.type}">
+                         <div class="card-text d-flex justify-content-between text-capitalize">
+                             <h5 class="store-item-value">
+                                 Sem item no estoque :(
+                             </h5>
+                         </div>
+                     </div>
+                 <?php endif; ?>
+
+             </div>
+
+
+         </div>
+     </section>
+
+     <!-- jquery -->
+     <script src="js/jquery-3.3.1.min.js"></script>
+     <!-- bootstrap js -->
+     <script src="js/bootstrap.bundle.min.js"></script>
+     <!-- script js -->
+     <!-- <script type="module" language="JavaScript" src="js/template.js"></script>
+    <script type="module" language="JavaScript" src="js/utils.js"></script> -->
+     <script type="module" language="JavaScript" src="js/main.js"></script>
+ </body>
+
+ </html>
